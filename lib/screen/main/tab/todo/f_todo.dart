@@ -1,6 +1,5 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/common/dart/extension/color_extension.dart';
-import 'package:fast_app_base/common/dart/extension/context_extension.dart';
 import 'package:fast_app_base/screen/main/tab/todo/w_todo_list.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +27,7 @@ class _TodoFragmentState extends State<TodoFragment> {
               ),
             ],
           ),
-          Expanded(child: const TodoList().pSymmetric(h: 15)),
+          Expanded(child: TodoList().pSymmetric(h: 15)),
         ],
       ),
     );
