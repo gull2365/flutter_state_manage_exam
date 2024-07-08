@@ -1,20 +1,17 @@
 import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/dart/extension/context_extension.dart';
 import 'package:fast_app_base/common/data/memory/todo_status.dart';
 import 'package:fast_app_base/common/data/memory/vo_todo.dart';
-import 'package:fast_app_base/common/widget/w_tap.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class TodoStatusWidget extends StatelessWidget {
+class TodoStatusWidget extends StatelessWidget with TodoDataProvider {
   final Todo todo;
-  const TodoStatusWidget(this.todo, {super.key});
+  TodoStatusWidget(this.todo, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Tap(
       onTap: () {
-        context.holder.changeTodoStatus(todo);
+        todoData.changeTodoStatus(todo);
       },
       child: SizedBox(
           width: 50,
