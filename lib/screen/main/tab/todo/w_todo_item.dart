@@ -6,15 +6,16 @@ import 'package:fast_app_base/common/widget/w_rounded_container.dart';
 import 'package:fast_app_base/screen/main/tab/todo/w_todo_status.dart';
 import 'package:flutter/material.dart';
 
-class TodoItem extends StatelessWidget with TodoDataProvider {
+class TodoItem extends StatelessWidget {
   final Todo todo;
-  TodoItem(this.todo, {super.key});
+  const TodoItem(this.todo, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Dismissible(
       key: ValueKey(todo.id),
       onDismissed: (direction) {
+        final todoData = context.readTodoCubit;
         todoData.removeTodo(todo);
       },
       child: RoundedContainer(
@@ -30,6 +31,7 @@ class TodoItem extends StatelessWidget with TodoDataProvider {
                 Expanded(child: todo.title.text.size(20).medium.make()),
                 IconButton(
                     onPressed: () async {
+                      final todoData = context.readTodoCubit;
                       todoData.editTodo(todo);
                     },
                     icon: const Icon(EvaIcons.editOutline)),
